@@ -1,0 +1,167 @@
+{%extends "base.html"%} {% block title%}Bookey |Home{%endblock%} {% block
+  content%}
+    <div class="advertisement">
+      <div class="slide-show">
+          <div class="list-images">
+              <img class="slide-img" src="static/images/img_slider1.png" style="width:100%">
+              <img class="slide-img" src="static/images/img_slider2.png" style="width:100%">
+              <img class="slide-img" src="static/images/img_slider3.png" style="width:100%">
+          </div>
+          <a class="prev" onclick="plusSlides(-1)"><i class="fa fa-arrow-left"></i></a>
+          <a class="next" onclick="plusSlides(1)"><i class="fa fa-arrow-right"></i></a>
+          <br>
+          <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span> 
+          <span class="dot" onclick="currentSlide(2)"></span> 
+          <span class="dot" onclick="currentSlide(3)"></span> 
+          </div>
+      </div>
+    </div>
+
+    <div class="small-container">
+      
+    </div>
+
+    
+
+    <div class="small-container1">
+      <div class="advertisemant" >
+        <a href="/product_detail/12"><img src="https://cdn.waterstones.com/images/00349328-2480x350.jpeg" alt=""style="width: 100%"></a>
+        
+      </div>
+      <h2 class="small-title">Featured Products</h2>
+      <div class="show-products">
+        {% for product in featuresProduct%}
+        <div class="col-4">
+          <a href="/product_detail/{{product[0]}}"><img src="{{ product[7]}}" /></a>          
+          <div class="infor-book">
+            <h4>{{product[1]}}</h4>
+            <h4 class="author">{{product[2]}}</h4>
+            {%set rate = product[8]|int%}
+            <div class="rating">
+              {%for i in range(0, rate) %}
+              <i class="fa fa-star"></i>
+              {%endfor%} {%for i in range(rate, 5) %}
+              <i class="fa fa-regular fa-star"></i>
+              {%endfor%}
+              <p class="price">${{product[3]}}</p>
+            </div>
+            <a href="/product_detail/{{product[0]}}" class="addtocart">Show Book</a>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+      
+      
+      <div class="advertisemant" >
+        <a href="/product_detail/32"><img src="https://cdn.waterstones.com/images/00353942-2480x300.jpeg" alt=""style="width: 100%"></a>
+      </div>
+
+      <h2 class="small-title">Latest Products</h2>
+      <div class="show-products ">
+        {% for product in latestProducts%}
+        <div class="col-4">                                 
+          <div class="infor-book">
+            <a href="/product_detail/{{product[0]}}"><img src="{{product[7]}}"/></a>                        
+            <h4>{{product[1]}}</h4>
+            <h4 class="author">{{product[2]}}</h4>
+            {%set rate = product[8]|int%}
+            <div class="rating">
+              {%for i in range(0, rate) %}
+              <i class="fa fa-star"></i>
+              {%endfor%} {%for i in range(rate, 5) %}
+              <i class="fa fa-regular fa-star"></i>
+              {%endfor%}
+              <p class="price">${{product[3]}}</p>
+            </div>
+            <a href="/product_detail/{{product[0]}}" class="addtocart">Show Book</a>    
+          </div>                     
+        </div>
+        {%endfor%}        
+      </div>   
+      <div class="advertisemant" >
+        <a href="/product_detail/13"><img src="https://cdn.waterstones.com/images/00348334-2480x350.jpeg" alt=""style="width: 100%"></a>
+      </div>   
+    </div>
+    <!-- Offer -->
+    <div class="offer">
+      <div class="small-container1">
+        <div class="show-products">
+          <div class="col-2">
+            <img
+              src="static/images/tamthe_rbg.png"
+              class="offer-img"
+            />
+          </div>
+          <div class="col-2">
+            <p>DEAL OF THE WEEK</p>
+            <h1>Summer Sale: Dive into Discounts!</h1>
+            <div class='cDown'>
+              <div class='cdBox'>
+                <span class='days'>00</span>
+                <span class='unit'>Days</span>
+              </div>
+              <div class="each-unit">:</div>
+              <div class='cdBox'>
+                <span class='hours'>00</span>
+                <span class='unit'>Hours</span>
+              </div>
+              <div class="each-unit">:</div>
+              <div class='cdBox'>
+                <span class='minutes'>00</span>
+                <span class='unit'>Minutes</span>
+              </div>
+              <div class="each-unit">:</div>
+              <div class='cdBox'>
+                <span class='seconds'>00</span>
+                <span class='unit'>Seconds</span>
+              </div>
+            </div>
+            <div class="discount-percent">- 35%</div>
+            <a href="/product_detail/31" class="btn1">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- Feadtued Categories -->
+
+    <div class="guarantee">
+      <div class="small-container1">
+        <div class="show-products">
+          <div class="col-3">
+            <div class="image_blog">
+              <img src="static/images/blog_img1.jpg" />
+            </div>
+            <div class="blog-preview-content">
+              <h3 className="blog-preview-title">The Waterstones Round Up: April's Best Books</h3>
+              <p>With plenty of eagerly-awaited titles finally arriving this month, April is simply bursting with brilliant books.</p>
+              <a href="#" class="dot-link" aria-label="Read more: The Waterstones Round Up: April's Best Books"><i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="image_blog">
+              <img src="https://cdn.waterstones.com/images/00349309-1450x1208.jpeg" />
+            </div>
+            <div class="blog-preview-content">
+              <h3 className="blog-preview-title">David Nicholls on the Journey From One Day to You Are Here</h3>
+              <p>David Nicholls looks back on his smash hit bestseller One Day and the parallels and differences between it and his latest masterpiece You Are Here.</p>
+              <a href="#" class="dot-link" aria-label="Read more: The Waterstones Round Up: April's Best Books"><i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="image_blog">
+              <img src="https://cdn.waterstones.com/images/00340224-1450x1208.jpeg" />
+            </div>
+            <div class="blog-preview-content">
+              <h3 className="blog-preview-title">The Fiction You Need to Read in 2024</h3>
+              <p>Covering contemporary fiction, crime and fantasy, find out which books you can't afford to ignore in 2024.</p>
+              <a href="#" class="dot-link" aria-label="Read more: The Waterstones Round Up: April's Best Books"><i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="static/js/index.js" defer></script>
+{% endblock %}

@@ -1,0 +1,75 @@
+{%extends "base.html" %} {% block title%}Bookey.{%endblock%} {% block
+    content%}
+    <div class="small-container1 single-product">
+      {% with messages = get_flashed_messages()%} {% if messages%} {%for message in
+      messages%}
+      <div class="alert" style="background-color: #d1e7dd">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';"
+          >&times;</span
+        >
+        <strong style="color: rgb(37, 98, 69)">Success! {{message}}</strong>
+        <a href="/cart" style="text-decoration: underline">view cart</a>
+      </div>
+      {%endfor%} {%endif %} {%endwith%}
+      <div class="contact-box">
+        <div class="col-2" style="margin-right: -20%">
+          <img src="{{product_detail[7]}}" width="50%" height="50%" id="ProductImg" />
+        </div>
+        <div class="contact-info">          
+          <h1>{{product_detail[1]}}</h1>
+          <h4 style="color: var(--gold);font-size: 1.2rem;" >{{product_detail[2]}}</h4>
+          
+          <h4>Publisher: {{product_detail[4]}}</h4>
+          <h4>Type: {{product_detail[5]}}</h4>
+          <p style="font-size: 1.5rem; color: var(--black);margin-top: 5px;">${{product_detail[3]}}</p>
+          <form
+            action="/cart/add"
+            method="POST"
+            style="display: flex; align-items: center; gap: 1.5rem"
+          >
+            <input type="hidden" name="product_id" value="{{product_detail[0]}}" />
+            <input type="number" name="quantity" step="1" min="1" value="1" style="width: 60px;height: 30px;font-size: 1rem; padding: 5px 10px;"/>
+            <button type="submit" style="width: 30%; height: 40px" class="btn">
+              Add to cart
+            </button>
+          </form>
+    
+          <h3>Introduce </h3>
+          <br />
+          <p class="describe">{{product_detail[6]}}</p>
+        </div>
+      </div>
+    </div>
+    <!-- title -->
+    <div class="small-container1">
+      <div class="show-products row-2">
+        <h2>Related Products</h2>
+      </div>
+    </div>
+    <!-- Products -->
+    <div class="small-container1">
+        <h2 class="small-title">Featured Products</h2>
+        <div class="show-products">
+            {% for product in related_products%}
+            <div class="col-4">
+                <a href="/product_detail/{{product[0]}}"><img src="{{ product[7]}}" /></a>          
+                <div class="infor-book">
+                    <h4>{{product[1]}}</h4>
+                    <h4>{{product_detail[2]}}</h4>
+                    {%set rate = product[8]|int%}
+                    <div class="rating">
+                    {%for i in range(0, rate) %}
+                    <i class="fa fa-star"></i>
+                    {%endfor%} {%for i in range(rate, 5) %}
+                    <i class="fa fa-regular fa-star"></i>
+                    {%endfor%}
+                    <p>{{product[3]}}</p>
+                    </div>                
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    
+    {%endblock%}
+    

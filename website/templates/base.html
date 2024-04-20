@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <title>{% block title%}{%endblock%}</title>
+
+</head>
+<body>
+    <header>
+        <div class="site-navbar-top">
+            <div class="container">
+                
+                <div class="site-logo">
+                    <a href="index.html" class="js-logo-clone">Bookey</a>
+                </div>
+                <div class="site-top-icons">
+                    <ul>
+                      {% if user_name %}
+                        <li>                        
+                          <a href="/account" style="text-decoration: none;color: var(--black)"><img
+                            src="{{ url_for('static', filename='/images/user-book.png') }}"
+                            width="20px"
+                            height="20px"
+                            color="var(--purple)"                                                        
+                            />{{user_name}}</a>
+                        </li>
+                      {% else %}
+                        <li><a class="base-login" href="/login">Login</a></li>
+                      {% endif %}                                          
+                      <li><a href="/cart"><img
+                          src="{{ url_for('static', filename='/images/cart.png') }}"
+                          width="20px"
+                          height="20px"
+                          
+                        /></a>
+                      </li>                                                              
+                    </ul>
+                  </div> 
+            </div>
+        </div>
+        <nav class="site-navigation " role="navigation">
+            <div class="container">
+              <ul class="site-menu ">
+                <li class="has-children ">
+                  <a href="/">Home</a>                  
+                </li>
+                <li class="has-children">
+                  <a href="/about">About</a>                  
+                </li>
+                <li class="has-children">
+                    <a href="/all_products">Shop</a>                    
+                </li>
+                <li>
+                  <a href="/contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+    {% block content%} {% endblock %}
+    <!-- footer -->
+
+    <div class="footer">
+        <div class="container-footer">
+          <div class="show-products">
+            <div class="footer-col-1" style="margin: 0 15%">
+              <h3>Download Our App</h3>
+              <p>Download App for Android and ios mobile phone.</p>
+              <div class="site-logo">
+                <a href="index.html" class="js-logo-clone">Bookey</a>
+              </div>
+            </div>
+            
+            <div class="footer-col-3">
+              <h3>Quick Link</h3>
+              <ul>
+                <li>Privacy Policy</li>
+                <li>Terms Of Use</li>
+                <li>FAQ</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+            <div class="footer-col-4">
+              <h3>Follow Us</h3>
+              <ul>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Instagram</li>
+                <li>Youtube</li>
+              </ul>
+            </div>
+          </div>
+          <hr />
+          <p class="copyright">Copyright 2023 - Verve & Co.</p>
+        </div>
+      </div>
+      <script src="static/js/index.js" defer></script>
+  </body>
+</body> 
+</html>
